@@ -1,10 +1,11 @@
+using Photon.Pun;
+using Photon.Realtime;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
-using Photon.Realtime;
 
-public class CreateManager : MonoBehaviourPunCallbacks
+public class Creater : MonoBehaviourPunCallbacks
 {
     [SerializeField] Transform[] transforms;
     static int count = 0;
@@ -13,15 +14,17 @@ public class CreateManager : MonoBehaviourPunCallbacks
     {
         Create();
     }
-    public void Create()
+
+    private void Create()
     {
         PhotonNetwork.Instantiate
         (
             "Character",
-            Vector3.zero,
+            transforms[count++].position,
             Quaternion.identity
         );
     }
+
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         count--;

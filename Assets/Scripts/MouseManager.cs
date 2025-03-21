@@ -45,6 +45,7 @@ public class MouseManager : MonoBehaviour
         switch(scene.buildIndex)
         {
             case 3: SetMouse(false);
+                Debug.Log("Scene 3");
                 break;
             default: SetMouse(true); 
                 break;
