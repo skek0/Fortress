@@ -7,7 +7,6 @@ using Photon.Realtime;
 public class CreateManager : MonoBehaviourPunCallbacks
 {
     [SerializeField] Transform[] transforms;
-    static int count = 0;
 
     private void Awake()
     {
@@ -18,12 +17,11 @@ public class CreateManager : MonoBehaviourPunCallbacks
         PhotonNetwork.Instantiate
         (
             "Character",
-            Vector3.zero,
+            transforms[Random.Range(0, transforms.Length)].position,
             Quaternion.identity
         );
     }
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        count--;
     }
 }

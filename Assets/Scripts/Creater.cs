@@ -1,6 +1,5 @@
 using Photon.Pun;
 using Photon.Realtime;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +7,6 @@ using UnityEngine;
 public class Creater : MonoBehaviourPunCallbacks
 {
     [SerializeField] Transform[] transforms;
-    static int count = 0;
 
     private void Awake()
     {
@@ -20,13 +18,12 @@ public class Creater : MonoBehaviourPunCallbacks
         PhotonNetwork.Instantiate
         (
             "Character",
-            transforms[count++].position,
+            transforms[Random.Range(0, transforms.Length)].position,
             Quaternion.identity
         );
     }
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
-        count--;
     }
 }
