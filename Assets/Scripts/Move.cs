@@ -5,7 +5,7 @@ using UnityEngine;
 public class Move : MonoBehaviour
 {
     [SerializeField] float speed;
-    [SerializeField] Vector3 direction;
+    Vector3 direction;
 
     public void OnKeyUpdate()
     {
