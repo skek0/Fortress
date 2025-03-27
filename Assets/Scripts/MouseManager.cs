@@ -17,9 +17,9 @@ public class MouseManager : MonoBehaviour
 
         Cursor.SetCursor(texture2D, Vector2.zero, CursorMode.ForceSoftware);
 
-        if (instance != null )
+        if (instance == null )
         {
-            instance = null;
+            instance = this;
         }
         else
         {

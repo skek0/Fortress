@@ -12,6 +12,8 @@ public class Character : MonoBehaviourPun
     [SerializeField] Rigidbody rigid;
     [SerializeField] GameObject remoteCamera;
 
+    [SerializeField] Pause pausePanel;
+
     public float speed;
     Vector3 direction;
 
@@ -20,6 +22,8 @@ public class Character : MonoBehaviourPun
         move = GetComponent<Move>();
         rotation = GetComponent<Rotation>();
         rigid = GetComponent<Rigidbody>();
+
+        pausePanel = FindObjectOfType<Pause>(true);
     }
     private void Start()
     {
@@ -30,6 +34,13 @@ public class Character : MonoBehaviourPun
     {
         if (!photonView.IsMine) return;
         
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            MouseManager.Instance.SetMouse(true);
+
+            pausePanel.gameObject.SetActive(true);
+        }
+
         move.OnKeyUpdate();
         rotation.OnMouseUpdate();
     }

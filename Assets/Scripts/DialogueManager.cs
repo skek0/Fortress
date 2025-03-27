@@ -18,10 +18,12 @@ public class DialogueManager : MonoBehaviourPunCallbacks
 
             if (inputfield.text.Length <= 0) return;
 
+            // inputField의 내용에 플레이어의 이름을 붙여 보냄
+            string talk = PhotonNetwork.NickName + ":" + inputfield.text;
             // RPC Target.All : 현재 홈에 있는 모든 클라이언트에게 Talk() 함수를
             // 실행하라는 명령을 전달
             // Remote Procedure Call
-            photonView.RPC("Talk", RpcTarget.All, inputfield.text);
+            photonView.RPC("Talk", RpcTarget.All, talk);
         }
     }
 

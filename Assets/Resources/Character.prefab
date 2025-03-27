@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6698991852036041915}
   - component: {fileID: 935486351660936801}
   - component: {fileID: 153827174265379316}
+  - component: {fileID: 2383239647864293929}
   m_Layer: 5
   m_Name: NickName Text
   m_TagString: Untagged
@@ -79,6 +80,19 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: New Text
+--- !u!114 &2383239647864293929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298288808955803679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5de06dcc760d0314eaa4c90c0148f9e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nickNameText: {fileID: 0}
 --- !u!1 &2137198057356013174
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,6 +566,7 @@ MonoBehaviour:
   rotation: {fileID: 0}
   rigid: {fileID: 0}
   remoteCamera: {fileID: 0}
+  pausePanel: {fileID: 0}
   speed: 0
 --- !u!114 &7230773378696256315
 MonoBehaviour:
