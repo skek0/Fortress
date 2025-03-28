@@ -1,5 +1,6 @@
 using Photon.Pun;
 using Photon.Realtime;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,15 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public void Connect()
     {
         // 서버에 접속하는 함수
-        PhotonNetwork.ConnectUsingSettings();
+        if (!PhotonNetwork.IsConnected)
+        {
+            PhotonNetwork.ConnectUsingSettings();
+        }
+        else
+        {
+            Debug.Log("Already Connected to Photon. Current state : " + PhotonNetwork.NetworkClientState);
+        }
+
     }
 
     public override void OnConnectedToMaster()
@@ -29,8 +38,15 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedLobby()
     {
-        PhotonNetwork.IsMessageQueueRunning = true;
+        StartCoroutine(LoadRoom());
+    }
 
+    IEnumerator LoadRoom()
+    {
+        while (!PhotonNetwork.IsConnectedAndReady)
+        {
+            yield return null;
+        }
         PhotonNetwork.LoadLevel("Room");
     }
 }

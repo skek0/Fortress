@@ -7,6 +7,7 @@ using UnityEngine;
 public class MasterManager : MonoBehaviourPunCallbacks
 {
     WaitForSeconds waitforSeconds = new WaitForSeconds(5f);
+    Vector3[] energyPos = new Vector3[4];
 
     void Start()
     {
